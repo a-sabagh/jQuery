@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>prop-html-val-text</title>
+</head>
+<body>
+<h2>console.log prop("checked")  and attr("checked") and val()</h2>
+<input type="checkbox" name="rng_checkbox" class="rng-checkbox">
+<h2>disable and enable checkbox with prop</h2>
+<input type="button" name="checkbox_disable" class="checkbox-disable" value="disable">
+<input type="button" name="checkbox_enable" class="checkbox-enable" value="enable">
+<input type="button" name="checkbox_checke" class="checkbox-checke" value="checke">
+<input type="button" name="checkbox_uncheck" class="checkbox-uncheck" value="uncheck">
+<input type="checkbox" name="rng_checkbox1" class="rng-checkbox1">
+<hr>
+<h3>$(".rng-checkbox2").prop({disabled: true,checked: true});</h3>
+<input type="checkbox" name="rng_checkbox2" class="rng-checkbox2">
+<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$(".rng-checkbox").change(function(){
+			console.log($(".rng-checkbox").prop("checked"));
+			console.log("----------------");
+			console.log($(".rng-checkbox").attr("checked"));
+			console.log("----------------");
+			console.log($(".rng-checkbox").val());
+			console.log("++++++++++++++++++++++++++++++++");
+		});
+		$(".checkbox-disable").click(function(){
+			$(".rng-checkbox1").prop("disabled" , true);
+		});
+		$(".checkbox-enable").click(function(){
+			$(".rng-checkbox1").prop("disabled" , false);
+		});
+		$(".checkbox-checke").click(function(){
+			$(".rng-checkbox1").prop("checked" , true);
+		});
+		$(".checkbox-uncheck").click(function(){
+			$(".rng-checkbox1").prop("checked" , false);
+		});
+		$(".rng-checkbox2").prop({
+			disabled: true,
+			checked: true
+		});
+	});
+</script>
+</body>
+</html>

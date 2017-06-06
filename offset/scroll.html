@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>scroll</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.parent{
+			width: 300px;
+			height: 100px;
+			overflow: scroll;
+		}
+		p{
+			white-space: nowrap;
+		}
+	</style>
+</head>
+<body>
+	<div class="grandparent">
+		<div class="parent">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation</p><p> ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla</p><p> pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore</p><p> magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat.</p><p> Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur.</p><p> Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>	
+	</div>
+	ScrollLeft: <span class="scrollLeft"></span><br> ScrollTop: <span class="scrollTop"></span><br><input type="button" name="" value="console scrollLeft">
+	<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var element = $(".parent");
+			$("input:button").on('click' , function(){
+				var scrollLeft = element.scrollLeft();
+				$("span.scrollLeft").text(scrollLeft);
+				var scrollTop = element.scrollTop();
+				$("span.scrollTop").text(scrollTop);
+			});
+
+		});
+	</script>
+</body>
+</html>

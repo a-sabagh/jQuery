@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQueryHeight</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.jq-height{
+			background: greenyellow;
+			border: 5px solid orange;
+			width: 500px;
+			height: 300px;
+			padding: 20px;
+			margin: 30px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+<input type="button" class="increaseHeight" name="" value="increaseHeight">
+<input type="button" class="decreaseHeight" name="" value="increaseHeight">
+<div class="jq-height">border: 5px;width: 500px; <span style="background: orange;"> height: 300px;</span>padding: 20px;margin: 30px;box-sizing:content-box;}</div>
+<span class="show-height">Height</span>
+<input type="button" class="show" name="" value="show height"><br>
+<span class="show-inner-height">innerHeight</span>
+<input type="button" class="inner-height" name="" value="show inner height">
+<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		alert( 'document height is: ' + $(document).height());
+		alert( 'window height is:' + $(window).height());
+		$(".show").on('click' , function(){
+			var height = $(".jq-height").height();
+			$(".show-height").text(height);
+		});
+		$(".inner-height").on('click' , function(){
+			var innerheight = $(".jq-height").innerHeight();
+			$(".show-inner-height").text(innerheight);
+		});
+		$(".increaseHeight").click(function(){
+			var height = $(".jq-height").height();
+			$(".jq-height").height(height + 30);
+		});
+		$(".decreaseHeight").click(function(){
+			var height = $(".jq-height").height();
+			$(".jq-height").height(height - 30);
+		});
+	});
+</script>
+</body>
+</html>

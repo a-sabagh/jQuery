@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>offsetParent-offset-position</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		p{
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.parent{
+			border: 1px solid black;
+			padding: 10px;
+			/*position: absolute;*/
+		}
+		.grandparent{
+			border: 1px solid red;
+			padding: 15px;
+			margin: 20px;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="grandparent">
+		<div class="parent">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna 
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var offsetParent = $("p").offsetParent();
+			offsetParent.css("border" , "5px solid blue");
+			var position = $("p").position();
+			console.log(position);
+			var offset = $("p").offset();
+			console.log(offset);
+		});
+	</script>
+</body>
+</html>

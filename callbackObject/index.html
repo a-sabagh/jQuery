@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CallbackObject</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<h1>You can see all proccess in console</h1>
+<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var log = function log(input){
+			console.log(input);
+		}
+		var add_log = function add_log(input){
+			console.log('add_log ' + input);
+		}
+		var rml = function rml(input){
+			input = input.replace('l' , '');
+			console.log(input);
+		}
+		var callbacks = $.Callbacks();
+		callbacks.add(log);
+		callbacks.fire('call first function');
+		console.log("---------------");
+		callbacks.add(add_log);
+		callbacks.fire('-->call second function');
+		console.log('==============');
+		// callbacks.disable();
+		// callbacks.fire("after disable");
+		// console.log('disable all callbacks function');
+		console.log("_______________");
+		var fired = callbacks.fired();
+		if(fired == true){
+			console.log("since some function is fired");
+		}
+		console.log("=-=-=-=-=-=-=-=-=-=-=");
+		var callbacks_has_log = callbacks.has(log);
+		if(callbacks_has_log == true){
+			console.log("function log is added to callbacks");
+		}else{
+			console.log("function log is not added to callbacks");
+		}
+		var callbacks_has_bal = callbacks.has(add_log);
+		if(callbacks_has_bal == true){
+			console.log("function add_log is added to callbacks");
+		}else{
+			console.log("function add_log is not added to callbacks");
+		}
+		var callbacks_has_rml = callbacks.has(rml);
+		if(callbacks_has_rml){
+			console.log("function rml is added to callbacks");
+		}else{
+			console.log("function rml is not added to callbacks");
+		}
+		console.log("-_-_-_-_-_-_-_-_-_-_-_-_-_");
+		callbacks.add(rml);
+		callbacks.fire("hello world");
+	});
+</script>
+</body>
+</html>

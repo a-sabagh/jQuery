@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>jQueryAjax load</title>
+        <title>serilize form data</title>
         <meta charset="utf-8">
         <style>
             body{padding: 30px;}
@@ -16,14 +16,14 @@
                     type: "post",
                     data: $("form").serialize(),
                     success: function(respons){
-                        $("p").html(respons);
+                        $("pre").html(respons);
                     }
                 });
             }
         </script>
     </head>
     <body>
-        <p id="content-txt"></p>
+        <pre ></pre>
         <form method="post" action="javascript:saveAccessGroup();">
             <input name="group_name" class="form-control" type="text">
             <input type="checkbox" name="checkarr[]" value="1">

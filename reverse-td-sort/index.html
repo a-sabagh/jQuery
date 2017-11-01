@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	 <script src="jquery-3.2.1.min.js"></script>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 		$(".table tr").each(function(){
+	 			$(this).children("td").each(function(){
+		 			var next = $(this).clone();
+		 			$(this).parent("tr").prepend(next);
+		 			$(this).remove();
+	 			});
+	 		});
+	 	});
+	 </script>
+</head>
+<body>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

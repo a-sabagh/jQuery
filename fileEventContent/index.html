@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>file event and content</title>
+</head>
+<body>
+<form action="" method="post">
+	<input type="file" name="filename" class="fileclass" multiple>
+</form>
+<script src="../jquery-core/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".fileclass").change(function(){
+			console.log("**file is selected**");
+			var files = this.files;
+	        console.log(files);
+		});
+	});
+</script>
+</body>
+</html>

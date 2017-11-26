@@ -1,2 +1,4 @@
 <?php
- var_dump($_POST);
+$data = $_POST['data'];
+$param = json_decode($data);
+var_dump($param);

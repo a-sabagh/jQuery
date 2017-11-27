@@ -7,10 +7,11 @@
     <script>
         $(document).ready(function () {
             $("#btn-load-php").click(function () {
-                var files = [];
+                var files = ["gnutec.png","3214","image/png"];
+                var jsn = JSON.stringify(files);
                 $.post({
                     url: 'file.php',
-                    data: files,
+                    data: {data: jsn},
                     success: function (response) {
                         $("#content-php").text(response);
                     }

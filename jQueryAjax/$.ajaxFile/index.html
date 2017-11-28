@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQueryAjax $_FILE</title>
+    <meta charset="utf-8">
+    <script src="../../jquery-core/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-load-php").click(function (e) {
+                e.preventDefault();
+                var form = $("#attachment")[0];
+                var form_data = new FormData(form);
+                $.ajax({
+                    url: 'file.php', 
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(response){
+                        $("#content-php").text(response);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <pre id="content-php"></pre>
+    <form id="attachment" enctype="multipart/form-data" action="" method="post">
+        <input id="file" type="file" name="file" />
+        <input type="button" id="btn-load-php" value="upload">
+    </form>
+</body>
+</html>

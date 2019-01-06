@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mahdi Ashoori</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            position: relative;
+        }
+
+        .el {
+            position: absolute;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+    <div class="el" data-hover="0"></div>
+
+    <script src="../jquery-core/jquery-3.2.1.min.js"></script>
+    <script>
+        function randomNumberIncludes(min, max) {
+            return Math.floor((Math.random() * max) + min);
+        }
+        $(document).ready(function() {
+            var color = ['#1E90FF', '#228B22', '#DCDCDC', '#FFD700', '#008000', '#F0FFF0', '#CD5C5C', '#4B0082', '#FFFACD', '#FF1493', '#BA55D3', '#48D1CC', '#808000'];
+            $(".el").each(function(index, element) {
+                var background = color[Math.floor(Math.random() * color.length)];
+                $(this).css({
+                    width: randomNumberIncludes(70, 120),
+                    height: randomNumberIncludes(70, 140),
+                    background: background,
+                    left: 30 * index + randomNumberIncludes(0, 300),
+                    top: 15 * index + randomNumberIncludes(0, 300)
+                });
+            });
+            $(".el").hover(function() {
+                var dataHover = $(this).data('hover');
+                $(this).data('hover', dataHover + 1);
+                $(this).attr('data-hover', $(this).data('hover'));
+                var currentPosition = $(this).position();
+                if (currentPosition.left > 100) {
+                    var left = randomNumberIncludes(-100, 100)
+                } else {
+                    var left = randomNumberIncludes(100, 100);
+                }
+                if (currentPosition.top > 100) {
+                    var top = randomNumberIncludes(-100, 100);
+                } else {
+                    var top = randomNumberIncludes(100, 100);
+                }
+                var atlastPosition = {
+                    'left': left,
+                    'top': top
+                };
+                console.log(atlastPosition);
+                $(this).animate({
+                    left: currentPosition.left + atlastPosition['left'],
+                    top: currentPosition.top + atlastPosition['top']
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

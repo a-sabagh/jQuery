@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>file event and content</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<form action="" method="post">
+	<input type="text" name="text" class="text" value="" >
+</form>
+<script src="../jquery-core/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("form").on("blur",".text",function(){
+			console.log("**text is change**");
+			var value = $(this).val();
+			console.log(value);
+	        $(this).attr("value",value);
+		});
+	});
+</script>
+</body>
+</html>

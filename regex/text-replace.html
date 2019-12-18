@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>regular expression replace</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript" src="../jquery-core/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var string = "fdasfdasf{64534}sdafdasf";
+			var output = string.replace(/\{.*\}/g, '');
+			console.log(output);
+		});
+	</script>
+</body>
+</html>

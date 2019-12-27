@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+</head>
+
+<body>
+     <template data-cashe="no-cashe" id="main"></template>
+     <script src="../jquery-core/jquery-3.2.1.min.js"></script>
+     <script>
+          $(document).ready(function(){
+               var documentObject = $("#main");
+               var documentFragment = documentObject.prop("content");
+               console.log(documentObject,documentFragment);
+               documentObject.html("<div>test</div>");
+               console.log(documentObject.html());
+          });
+     </script>
+</body>
+</html>

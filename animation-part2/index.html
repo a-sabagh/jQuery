@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animate </title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .animation-container {
+            position: relative;
+        }
+        .animation-overflow {
+            position: absolute;
+        }
+        .right-animation-wrapper ,
+        .left-animation-wrapper {
+            position: absolute;
+        }
+        .animation-1,.animation-2,.animation-3 {
+            background: #431d10;
+        }
+        .right-animation-wrapper .animation-1 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 4px;
+        }
+        .right-animation-wrapper .animation-2 {
+            height: 0;
+            width: 4px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .right-animation-wrapper .animation-3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+        }
+        .left-animation-wrapper .animation-1 {
+            position: absolute;
+            width: 0;
+            height: 4px;
+            bottom: 0;
+        }
+        .right-animation-wrapper .animation-last,
+        .left-animation-wrapper .animation-last {
+            height: 2px;
+            width: 0;
+            position: absolute;
+            background: #431d10;
+        }
+        .right-animation-wrapper .animation-last {
+            left: 0;
+            top: 0;
+        }
+        .left-animation-wrapper .animation-last {
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+        }
+        .top-animation-wrapper {
+            position: absolute;
+        }
+        .top-animation-wrapper .animation-1,
+        .top-animation-wrapper .animation-2,
+        .top-animation-wrapper .animation-3,
+        .top-animation-wrapper .animation-last {
+            position: absolute;
+            background: #431d10;
+        }
+        .top-animation-wrapper .animation-1 {
+            right: 0;
+            width: 4px;
+            height: 0;
+        }
+        .top-animation-wrapper .animation-2 {
+            bottom: 0;
+            right: 0;
+            height: 4px;
+            width: 0;
+        }
+        .top-animation-wrapper .animation-3 {
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+        }
+        .top-animation-wrapper .animation-last {
+            width: 2px;
+            height: 0;
+            left: 0;
+            bottom: 0;
+        }
+        .bottom-animation-wrapper {
+            position: absolute;
+            left: 50%;
+        }
+        .bottom-animation-wrapper .animation-1,
+        .bottom-animation-wrapper .animation-last {
+            position: absolute;
+            right: 0;
+        }
+        .bottom-animation-wrapper .animation-1{
+            width: 2px;
+            height: 0;
+            bottom: 0;
+        }
+        .bottom-animation-wrapper .animation-last {
+            width: 4px;
+            height: 0;
+            background: #431d10;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animation-container">
+        <div class="right-animation-wrapper">
+            <div class="animation-1"></div>
+            <div class="animation-2"></div>
+            <div class="animation-3"></div>
+            <div class="animation-last"></div>
+        </div>
+        <div class="left-animation-wrapper">
+            <div class="animation-1"></div>
+            <div class="animation-last"></div>
+        </div>
+        <div class="top-animation-wrapper">
+            <div class="animation-1"></div>
+            <div class="animation-2"></div>
+            <div class="animation-3"></div>
+            <div class="animation-last"></div>
+        </div>
+        <div class="bottom-animation-wrapper">
+            <div class="animation-1"></div>
+            <div class="animation-last"></div>
+        </div>
+    </div>
+    <script src="../jquery-core/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var windowWidth = $(window).width();
+            var windowHeight = $(window).height();
+            var ratio = windowWidth / windowHeight;
+            var diffWidth = 6;
+            var diffHeight = diffWidth * ratio;
+            var widthSymbol = '%';
+            var heightSymbol = 'vh';
+            var width = 50;
+            var height = diffHeight;
+            rightAnimation();
+            leftAnimation();
+            topAnimation();
+            bottomAnimation();
+            console.log(diffHeight * (100/(50+diffHeight)));
+            function bottomAnimation(){
+                $(".bottom-animation-wrapper").css({
+                    width: diffWidth + widthSymbol,
+                    height: 50 + diffHeight +  heightSymbol,
+                    top: 50 - diffHeight + heightSymbol
+                });
+                
+                $(".bottom-animation-wrapper .animation-last").css({
+                    bottom: 100 - (diffHeight * (100/(50+diffHeight))) + widthSymbol,
+                    top: 'auto',
+                });
+                $(".bottom-animation-wrapper .animation-1").delay(3500).animate({
+                    height: 100 - (diffHeight * (100/(50+diffHeight))) + widthSymbol ,
+                },1500,function(){
+                    $(".bottom-animation-wrapper .animation-last").animate({
+                        height: diffHeight * (100/(50+diffHeight)) + widthSymbol,
+                    });
+                });
+            }
+
+            function topAnimation(){
+                $(".top-animation-wrapper").css({
+                    width: diffWidth + widthSymbol,
+                    height: 50 + heightSymbol,
+                    top: 0,
+                    left: 50 + widthSymbol
+                });
+                $(".top-animation-wrapper .animation-1").delay(2100).animate({
+                    height: "100%",
+                },1500,function(){
+                    $(".top-animation-wrapper .animation-1").animate({
+                        top: 'auto',
+                        bottom: 0,
+                        height: 0
+                    },1500);
+                });
+                $(".top-animation-wrapper .animation-2").delay(3600).animate({
+                    width: 100 + widthSymbol
+                },800,function(){
+                    $(".top-animation-wrapper .animation-3").animate({
+                        height: diffHeight * 2 + "%",
+                    },800);
+                    $(".top-animation-wrapper .animation-last").delay(300).animate({
+                        height: '100%'
+                    },1500);
+                });
+                
+            }
+
+            function leftAnimation(){
+                $(".left-animation-wrapper").css({
+                    width: width + diffWidth + widthSymbol,
+                    height: height + heightSymbol,
+                    top: 50 - diffHeight + heightSymbol,
+                    left: 0 + heightSymbol
+                });
+                $(".left-animation-wrapper .animation-1").animate({
+                    right: 0,
+                    left: 'auto',
+                    width: 50 + widthSymbol,
+                },1500,function(){
+                    $(".left-animation-wrapper .animation-1").animate({
+                        right: 0,
+                        left: 'auto',
+                        width: diffWidth * (100/(width + diffWidth)) + widthSymbol,
+                    },1000,function(){
+                        $(".left-animation-wrapper .animation-last").animate({
+                            width: 100 + widthSymbol
+                        },1500);
+                    });
+                });
+            }
+
+            function rightAnimation () {
+                $(".right-animation-wrapper").css({
+                    width: width + widthSymbol,
+                    height: height + heightSymbol,
+                    top: 50 - diffHeight + heightSymbol,
+                    right: 0 + heightSymbol
+                });
+                $(".right-animation-wrapper .animation-1").animate({
+                    width: 100 + widthSymbol,
+                },1500,function(){
+                    $(".right-animation-wrapper .animation-1").animate({
+                        left: 0,
+                        width: 0
+                    },1500);
+                });
+                $(".right-animation-wrapper .animation-2").delay(1500).animate({
+                    height: 100 + widthSymbol,
+                },800,function(){
+                    $(".right-animation-wrapper .animation-2").delay(700).animate({
+                        top: 0,
+                        height: 0
+                    },800);
+                });
+                $(".right-animation-wrapper .animation-3").delay(2300).animate({
+                    width: diffWidth*2 + widthSymbol
+                },1000);
+                $(".right-animation-wrapper .animation-last").delay(2800).animate({
+                    width: 100 + widthSymbol
+                },1500);
+            }
+        });
+    </script>
+</body>
+
+</html>
